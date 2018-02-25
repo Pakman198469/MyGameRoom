@@ -8,15 +8,14 @@ public abstract class Toy {
     private String name;
     private double price;
 
-    public Toy(String name) {
+    public Toy(String name, int toyCategory) {
         this.toyCategory = toyCategory;
         this.name = name;
-        this.price = price;
     }
 
     @Override
     public String toString(){
-        return name;
+        return name + " Toy category=  " + toyCategory + " Price= " + this.getPrice();
     }
 
     public int getToyCategory() {

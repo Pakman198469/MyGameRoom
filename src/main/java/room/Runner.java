@@ -1,10 +1,25 @@
 package room;
 
+import room.cars.BigCar;
+import userActions.Actions;
+
 /**
  * Created by Aleh_Hutyrchyk on 2/23/2018.
  */
 public class Runner {
     public static void main(String[] args) {
+        //List <Class<? extends Toy>> toyClasses = new ArrayList(Arrays.asList(BigCar.class, MediumCar.class, SmallCar.class, Lego.class, Puzzle.class,Rifle.class));
+
+        Actions actions = new Actions(20, 100);
+        actions.fillGameRoom();
+        System.out.println(actions.getOutput());
+
         System.out.println("Home");
+
+        BigCar bigCar = new BigCar();
+        System.out.println(bigCar.getPrice() + " " + bigCar.getName() + " " + bigCar.carControl() + " " + bigCar.getToyCategory());
+
+        //RandomToyGenerator rtg = new RandomToyGenerator(toyClasses);
+        //System.out.println(rtg.getRandomToy());
     }
 }
