@@ -69,15 +69,14 @@ public class Actions {
     private String getSearchResults(List<Toy> foundByPrice) {
         String result = "";
         for (Toy x : foundByPrice) {
-            //System.out.println(x);
-            result += x.toString();
+            result += x.toString() + "\n";
         }
         return result;
     }
 
-    /*private String getSearchResult() {
+    public String getSearchResult() {
         return getSearchResults(foundByPrice);
-    }*/
+    }
 
     public void sortByName() {
         NameComparator nameComparator = new NameComparator();
