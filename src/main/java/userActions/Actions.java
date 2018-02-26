@@ -8,10 +8,10 @@ import room.cars.SmallCar;
 import room.constructor.Lego;
 import room.puzzles.Puzzle;
 import room.weapon.Rifle;
+import sorting.NameComparator;
+import sorting.PriceComparator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Aleh_Hutyrchyk on 2/23/2018.
@@ -24,6 +24,7 @@ public class Actions {
     private RandomToyGenerator randomToyGenerator;
     private List<Class<? extends Toy>> toyClasses = new ArrayList(Arrays.asList(BigCar.class, MediumCar.class, SmallCar.class, Lego.class, Puzzle.class,Rifle.class));
     private List<Toy> myGameRoom;
+
 
     public Actions(int toyLimit, double moneyLimit) {
         this.toyLimit = toyLimit;
@@ -51,17 +52,33 @@ public class Actions {
         }
     }
 
-    public String getOutput(List<Toy> myGameRoom) {
+    private String getResults(List<Toy> myGameRoom) {
         String result = "\nOutput:\n";
         for (Toy toy : myGameRoom) {
             result += toy.toString() + "\n";
         }
-
         return result;
     }
 
-    public String getOutput() {
-        return getOutput(myGameRoom);
+    public String getResults() {
+        return getResults(myGameRoom);
+    }
+
+    public void sortByName() {
+        NameComparator nameComparator = new NameComparator();
+        Collections.sort(myGameRoom, nameComparator);
+        for(Toy x : myGameRoom) {
+            System.out.println(x.getName() + " " + x.getPrice());
+        }
+    }
+
+    public void sortByPrice() {
+        PriceComparator priceComparator = new PriceComparator();
+        Collections.sort(myGameRoom, priceComparator);
+        System.out.println("\nSorted by price: \n");
+        for (Toy x : myGameRoom) {
+            System.out.println(x.getName() + " " + x.getPrice());
+        }
     }
 
 }

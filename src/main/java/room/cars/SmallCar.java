@@ -6,7 +6,7 @@ import room.Toy;
  * Created by Aleh_Hutyrchyk on 2/23/2018.
  */
 public class SmallCar extends Toy {
-    private  double price = 10;
+    private  double price = 16.8;
 
     public SmallCar() {
         this("Small Car", 1);

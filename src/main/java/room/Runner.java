@@ -10,11 +10,13 @@ public class Runner {
     public static void main(String[] args) {
         //List <Class<? extends Toy>> toyClasses = new ArrayList(Arrays.asList(BigCar.class, MediumCar.class, SmallCar.class, Lego.class, Puzzle.class,Rifle.class));
 
-        Actions actions = new Actions(20, 100);
+        Actions actions = new Actions(20, 300);
         actions.fillGameRoom();
-        System.out.println(actions.getOutput());
+        System.out.println(actions.getResults());
+        actions.sortByName();
+        actions.sortByPrice();
 
-        System.out.println("Home");
+        System.out.println("\n" + "Home");
 
         BigCar bigCar = new BigCar();
         System.out.println(bigCar.getPrice() + " " + bigCar.getName() + " " + bigCar.carControl() + " " + bigCar.getToyCategory());
