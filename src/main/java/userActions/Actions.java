@@ -24,6 +24,7 @@ public class Actions {
     private RandomToyGenerator randomToyGenerator;
     private List<Class<? extends Toy>> toyClasses = new ArrayList(Arrays.asList(BigCar.class, MediumCar.class, SmallCar.class, Lego.class, Puzzle.class,Rifle.class));
     private List<Toy> myGameRoom;
+    private List<Toy> foundByPrice;
 
 
     public Actions(int toyLimit, double moneyLimit) {
@@ -31,6 +32,7 @@ public class Actions {
         this.moneyLimit = moneyLimit;
         this.randomToyGenerator = new RandomToyGenerator(toyClasses);
         this.myGameRoom = new ArrayList<Toy>();
+        this.foundByPrice = new ArrayList<Toy>();
     }
 
     private boolean addToyToGameRoom(Toy toy) {
@@ -64,9 +66,23 @@ public class Actions {
         return getResults(myGameRoom);
     }
 
+    private String getSearchResults(List<Toy> foundByPrice) {
+        String result = "";
+        for (Toy x : foundByPrice) {
+            //System.out.println(x);
+            result += x.toString();
+        }
+        return result;
+    }
+
+    /*private String getSearchResult() {
+        return getSearchResults(foundByPrice);
+    }*/
+
     public void sortByName() {
         NameComparator nameComparator = new NameComparator();
         Collections.sort(myGameRoom, nameComparator);
+        System.out.println("\nSorted by name: \n");
         for(Toy x : myGameRoom) {
             System.out.println(x.getName() + " " + x.getPrice());
         }
@@ -79,6 +95,16 @@ public class Actions {
         for (Toy x : myGameRoom) {
             System.out.println(x.getName() + " " + x.getPrice());
         }
+    }
+
+    public String findByPrice(double minPrice, double maxPrice) {
+        for (Toy x : myGameRoom) {
+            if(x.getPrice() >= minPrice && x.getPrice() <= maxPrice) {
+                foundByPrice.add(x);
+            }
+        }
+        System.out.println("\nToys found in price range:");
+        return getSearchResults(foundByPrice);
     }
 
 }

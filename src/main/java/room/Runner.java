@@ -15,6 +15,9 @@ public class Runner {
         System.out.println(actions.getResults());
         actions.sortByName();
         actions.sortByPrice();
+        actions.findByPrice(8,16);
+
+
 
         System.out.println("\n" + "Home");
 
