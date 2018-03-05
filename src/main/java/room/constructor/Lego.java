@@ -12,7 +12,7 @@ public class Lego extends Toy{
         this("Lego Pirates", 2);
     }
 
-    public Lego(String name, int toyCategory) {
+    private Lego(String name, int toyCategory) {
         super(name, toyCategory);
     }
 

@@ -17,7 +17,6 @@ import java.util.*;
  * Created by Aleh_Hutyrchyk on 2/23/2018.
  */
 public class Actions {
-
     private int toyLimit;
     private double moneyLimit;
     private double money;
@@ -48,34 +47,62 @@ public class Actions {
 
     public void fillGameRoom () {
         while(true) {
-            Toy toy = getToy();
+            Toy toy;
+            toy = getToy();
             if (!addToyToGameRoom(toy)) break;
             money += toy.getPrice();
         }
     }
 
-    private String getResults(List<Toy> myGameRoom) {
+    private String getRoomContent(List<Toy> myGameRoomContent) {
         String result = "\nOutput:\n";
-        for (Toy toy : myGameRoom) {
+        for (Toy toy : myGameRoomContent) {
+            if(toy instanceof BigCar) {
+                result += toy.toString() + " " + ((BigCar) toy).getMoreInfo() + "\n";
+            } else if(toy instanceof SmallCar) {
+                result += toy.toString() + " " + ((SmallCar) toy).getMoreInfo() + "\n";
+            } else
             result += toy.toString() + "\n";
         }
         return result;
     }
 
-    public String getResults() {
-        return getResults(myGameRoom);
+    public String getRoomContent() {
+        return getRoomContent(myGameRoom);
     }
 
-    private String getSearchResults(List<Toy> foundByPrice) {
+    private String getSearchByPriceResults(List<Toy> foundItemByPrice) {
+        ListIterator iterator = foundItemByPrice.listIterator();
         String result = "";
-        for (Toy x : foundByPrice) {
-            result += x.toString() + "\n";
+        try {
+            if (!iterator.hasNext()) {
+                Throwable ex = new Exception();
+                throw ex;
+            }
+        } catch (Throwable throwable) {
+            System.out.println("No items in defined price range!");
+            System.exit(0);
+        }
+        while (iterator.hasNext()) {
+            result += iterator.next() + "\n";
         }
         return result;
     }
 
-    public String getSearchResult() {
-        return getSearchResults(foundByPrice);
+    /*private String getSearchByPriceResults(List<Toy> foundByPrice) {
+        ListIterator iterator = foundByPrice.listIterator();
+        String result = "";
+        if(!iterator.hasNext()) {
+            result += "No items in defined price range!";
+        }
+        while (iterator.hasNext()) {
+            result += iterator.next() + "\n";
+        }
+        return result;
+    }*/
+
+    public String getSearchByPriceResult() {
+        return getSearchByPriceResults(foundByPrice);
     }
 
     public void sortByName() {
@@ -102,8 +129,8 @@ public class Actions {
                 foundByPrice.add(x);
             }
         }
-        System.out.println("\nToys found in price range:");
-        return getSearchResults(foundByPrice);
+        System.out.println("\nToys found in price range from " + minPrice + " to " + maxPrice + " :\n");
+        return getSearchByPriceResults(foundByPrice);
     }
 
 }

@@ -12,7 +12,7 @@ public class Puzzle extends Toy{
         this("Puzzle", 2);
     }
 
-    public Puzzle(String name, int toyCategory) {
+    private Puzzle(String name, int toyCategory) {
         super(name, toyCategory);
     }
 

@@ -12,9 +12,8 @@ public class MediumCar extends Toy {
         this("Medium Car", 2);
     }
 
-    public MediumCar(String name, int toyCategory) {
+    private MediumCar(String name, int toyCategory) {
         super(name, toyCategory);
-        this.getPrice();
     }
 
     public double getPrice() {

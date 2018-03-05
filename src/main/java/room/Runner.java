@@ -1,6 +1,9 @@
 package room;
 
 import room.cars.BigCar;
+import room.cars.Cars;
+import room.cars.MediumCar;
+import room.cars.SmallCar;
 import userActions.Actions;
 
 /**
@@ -8,24 +11,13 @@ import userActions.Actions;
  */
 public class Runner {
     public static void main(String[] args) {
-        //List <Class<? extends Toy>> toyClasses = new ArrayList(Arrays.asList(BigCar.class, MediumCar.class, SmallCar.class, Lego.class, Puzzle.class,Rifle.class));
-
-        Actions actions = new Actions(20, 300);
+        Actions actions = new Actions(6, 300);
         actions.fillGameRoom();
-        System.out.println(actions.getResults());
+        System.out.println(actions.getRoomContent());
         actions.sortByName();
         actions.sortByPrice();
-        actions.findByPrice(8,16);
-        System.out.println(actions.getSearchResult());
+        actions.findByPrice(3,31);
+        System.out.println(actions.getSearchByPriceResult());
 
-
-
-        System.out.println("\n" + "Home");
-
-        BigCar bigCar = new BigCar();
-        System.out.println(bigCar.getPrice() + " " + bigCar.getName() + " " + bigCar.carControl() + " " + bigCar.getToyCategory());
-
-        //RandomToyGenerator rtg = new RandomToyGenerator(toyClasses);
-        //System.out.println(rtg.getRandomToy());
     }
 }

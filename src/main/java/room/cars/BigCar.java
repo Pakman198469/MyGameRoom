@@ -13,20 +13,20 @@ public class BigCar extends Toy implements Cars{
         this("Big Car", 2);
     }
 
-    public BigCar(String name, int toyCategory) {
+
+    private BigCar(String name, int toyCategory) {
         super(name, toyCategory);
-        this.getPrice();
     }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public String getCarControl() {
+        return carControl;
     }
 
-    public String carControl() {
-        return this.carControl;
+    public String getMoreInfo() {
+        return carControl + "(4AA batteries) ";
     }
 }

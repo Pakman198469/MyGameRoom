@@ -12,7 +12,7 @@ public class Rifle extends Toy{
         this("Assult Rifle", 1);
     }
 
-    public Rifle(String name, int toyCategory) {
+    private Rifle(String name, int toyCategory) {
         super(name, toyCategory);
     }
 
